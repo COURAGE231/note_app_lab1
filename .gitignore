@@ -1,0 +1,20 @@
+# Виртуальное окружение
+venv/
+ENV/
+env/
+
+# Кеши Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Логи и прочий мусор
+*.log
+
+# SQLite / локальные базы (если не нужно хранить)
+*.db
+instance/
+
+# IDE
+.vscode/
+.idea/
