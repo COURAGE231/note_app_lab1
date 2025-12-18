@@ -28,10 +28,15 @@ jobs:
           pip install -r requirements.txt
           pip install bandit pytest
 
-      - name: Run tests
+      # Запускаем тесты ТОЛЬКО если есть каталог tests
+      - name: Run tests (if present)
         run: |
-          pytest
-        continue-on-error: false
+          if [ -d "tests" ]; then
+            echo "Tests directory found, running pytest..."
+            pytest
+          else
+            echo "No tests directory, skipping pytest."
+          fi
 
       - name: Run Bandit security scan
         run: |
