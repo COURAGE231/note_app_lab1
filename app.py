@@ -248,8 +248,7 @@ if __name__ == "__main__":
     with app.app_context():
         db.create_all()
 
+    # Безопасный вариант:
+    # по умолчанию debug выключен, включается только через переменную окружения FLASK_DEBUG=1
     debug_mode = os.getenv("FLASK_DEBUG", "0") == "1"
-    host = os.getenv("FLASK_RUN_HOST", "127.0.0.1")
-    port = int(os.getenv("FLASK_RUN_PORT", "5000"))
-
-    app.run(host=host, port=port, debug=debug_mode)
+    app.run(host="127.0.0.1", port=5000, debug=debug_mode)
