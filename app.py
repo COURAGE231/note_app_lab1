@@ -243,13 +243,9 @@ def add_security_headers(response):
 # ---------------------------
 # ТОЧКА ВХОДА
 # ---------------------------
-
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
 
-    debug_mode = os.getenv("FLASK_DEBUG", "0") == "1"
-    host = os.getenv("FLASK_RUN_HOST", "127.0.0.1")
-    port = int(os.getenv("FLASK_RUN_PORT", "5000"))
-
-    app.run(host=host, port=port, debug=debug_mode)
+    # Небезопасно: отладка включена и слушаем все интерфейсы
+    app.run(host="0.0.0.0", port=5000, debug=True)
